@@ -46,7 +46,9 @@ MooseX::App::Cmd::Command - Base class for L<MooseX::Getopt> based L<App::Cmd::C
 
 =head1 SYNOPSIS
 
-	use MooseX::App::Cmd::Command;
+    use Moose;
+
+    extends qw(MooseX::App::Cmd::Command);
 
     # no need to set opt_spec
     # see MooseX::Getopt for documentation on how to specify options
