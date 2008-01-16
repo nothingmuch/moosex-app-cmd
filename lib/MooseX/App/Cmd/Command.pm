@@ -5,7 +5,7 @@ use Moose;
 
 with qw/MooseX::Getopt/;
 
-extends qw/App::Cmd::Command/;
+extends qw(Moose::Object App::Cmd::Command);
 
 use Getopt::Long::Descriptive ();
 
