@@ -3,7 +3,7 @@
 package MooseX::App::Cmd;
 use Moose;
 
-extends qw/App::Cmd/;
+extends qw(Moose::Object App::Cmd);
 
 __PACKAGE__;
 
