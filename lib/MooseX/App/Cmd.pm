@@ -5,7 +5,7 @@ use Moose;
 
 extends qw(Moose::Object App::Cmd);
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 __PACKAGE__;
 

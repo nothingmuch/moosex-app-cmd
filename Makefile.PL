@@ -14,7 +14,7 @@ WriteMakefile(
 		'Test::use::ok'             => 0,
         'App::Cmd'                  => 0,
         'Moose'                     => 0,
-        'MooseX::Getopt'            => 0,
+        'MooseX::Getopt'            => "0.09",
         'Getopt::Long::Descriptive' => 0,
 	},
 );
