@@ -11,25 +11,39 @@ with qw(MooseX::Getopt);
 
 use Getopt::Long::Descriptive ();
 
+has usage => (
+    metaclass => "NoGetopt",
+    isa => "Object",
+    is  => "ro",
+    required => 1,
+);
+
+has app => (
+    metaclass => "NoGetopt",
+    isa => "MooseX::App::Cmd",
+    is  => "ro",
+    required => 1,
+);
+
 sub _process_args {
     my ( $class, $args, @params ) = @_;
 
-    # @params is ignored here. it's the null list returned by opt_spec, which _attrs_to_options doesn't use
-    # we're passing it around for future use if any.
-
-    local @ARGV = @$args;
-
-    my %processed = $class->_parse_argv( options => [ $class->_attrs_to_options( @params ) ] );
+    my %processed = $class->_parse_argv(
+        argv => $args,
+        options => [ $class->_attrs_to_options( @params ) ],
+    );
 
     return (
         $processed{params},
-
         $processed{argv},
-
-        usage => bless(sub { "<usage>" }, "Getopt::Long::Descriptive::Usage"),
-
+        usage => $processed{usage},
         %{ $processed{params} }, # params from CLI are also fields in MooseX::Getopt
     );
+}
+
+sub _usage_format {
+    my $class = shift;
+    $class->usage_desc();
 }
 
 __PACKAGE__;
