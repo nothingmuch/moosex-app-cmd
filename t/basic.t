@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 10;
+use Test::More tests => 12;
 
 use lib 't/lib';
 
@@ -15,15 +15,18 @@ isa_ok($cmd, 'Test::MyCmd');
 
 is_deeply(
   [ sort $cmd->command_names ],
-  [ sort qw(help --help -h -? commands frob frobulate justusage stock) ],
+  [ sort qw(help --help -h -? commands frob frobulate justusage stock bark) ],
   "got correct list of registered command names",
 );
 
+use Data::Dumper;
+Dumper $cmd->command_plugins;
 is_deeply(
   [ sort $cmd->command_plugins ],
   [ qw(
     App::Cmd::Command::commands
     App::Cmd::Command::help
+    Test::MyCmd::Command::bark
     Test::MyCmd::Command::frobulate
     Test::MyCmd::Command::justusage
     Test::MyCmd::Command::stock
@@ -63,6 +66,17 @@ is_deeply(
   like($@, qr/mandatory method/, "un-subclassed &run leads to death");
 }
 
+{
+  local @ARGV = qw(bark);
+  eval { $cmd->run };
+  
+  like(
+    $@,
+    qr/Required option missing: wow/, 
+    "required option fileld is missing",
+  );
+}
+
 SKIP: {
   my $have_TO = eval { require Test::Output; 1; };
   print $@;
@@ -72,7 +86,7 @@ SKIP: {
 
   my ($output) = Test::Output::output_from(sub { $cmd->run });
 
-  for my $name (qw(commands frobulate justusage stock)) {
+  for my $name (qw(commands frobulate justusage stock bark)) {
     like($output, qr/^\s+\Q$name\E/sm, "$name plugin in listing");
   }
 }

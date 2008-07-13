@@ -30,7 +30,7 @@ sub _process_args {
 
     my %processed = $class->_parse_argv(
         argv => $args,
-        options => [ $class->_attrs_to_options( @params ) ],
+        options => [ $class->_attrs_to_options() ],
     );
 
     return (
