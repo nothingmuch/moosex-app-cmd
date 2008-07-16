@@ -1,5 +1,6 @@
 0.03
     - EMulate App::Cmd's new + tests (groditi)
+    - Fix for newest MX::Getopt (dann)
 
 0.02
     - Use MooseX::Getopt 0.09's Getopt::Long::Descriptive features
