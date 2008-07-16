@@ -28,16 +28,36 @@ has app => (
 sub _process_args {
     my ( $class, $args, @params ) = @_;
 
+    my $config_from_file;
+    if($class->meta->does_role('MooseX::ConfigFromFile')) {
+        local @ARGV = @ARGV;
+
+        my $configfile;
+        my $opt_parser = Getopt::Long::Parser->new( config => [ qw( pass_through
+ ) ] );
+        $opt_parser->getoptions( "configfile=s" => \$configfile );        if(!defined $configfile) {
+            my $cfmeta = $class->meta->find_attribute_by_name('configfile');
+            $configfile = $cfmeta->default if $cfmeta->has_default;
+        }
+
+        if(defined $configfile) {
+            $config_from_file = $class->get_config_from_file($configfile);
+        }
+    }
+
     my %processed = $class->_parse_argv(
         argv => $args,
-        options => [ $class->_attrs_to_options() ],
+        options => [ $class->_attrs_to_options( $config_from_file ) ],
     );
 
     return (
         $processed{params},
         $processed{argv},
         usage => $processed{usage},
-        %{ $processed{params} }, # params from CLI are also fields in MooseX::Getopt
+        # params from CLI are also fields in MooseX::Getopt
+        %{ $config_from_file ?
+            { %$config_from_file, %{$processed{params}} } :
+            $processed{params} },
     );
 }
 
