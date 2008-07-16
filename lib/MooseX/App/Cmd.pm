@@ -23,7 +23,7 @@ sub BUILD {
   $self->{full_arg0} = $arg0;
 }
 
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 
 __PACKAGE__;
 

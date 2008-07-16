@@ -1,6 +1,7 @@
 0.03
     - EMulate App::Cmd's new + tests (groditi)
     - Fix for newest MX::Getopt (dann)
+    - Add the ability to handle --configfile when used with MX::ConfigFromFile (lestrrat)
 
 0.02
     - Use MooseX::Getopt 0.09's Getopt::Long::Descriptive features
