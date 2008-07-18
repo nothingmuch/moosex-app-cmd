@@ -1,3 +1,6 @@
+0.04
+    - Fix failing test when no Test::Output is available (lestrrat)
+
 0.03
     - EMulate App::Cmd's new + tests (groditi)
     - Fix for newest MX::Getopt (dann)
