@@ -79,8 +79,8 @@ is_deeply(
 
 SKIP: {
   my $have_TO = eval { require Test::Output; 1; };
-  print $@;
-  skip "these tests require Test::Output", 4 unless $have_TO;
+  print STDERR $@;
+  skip "these tests require Test::Output", 5 unless $have_TO;
 
   local @ARGV = qw(commands);
 
