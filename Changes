@@ -1,3 +1,6 @@
+0.05
+    - Various minor fixes due to upstream module changes
+
 0.04
     - Fix failing test when no Test::Output is available.
       No code change (lestrrat)
