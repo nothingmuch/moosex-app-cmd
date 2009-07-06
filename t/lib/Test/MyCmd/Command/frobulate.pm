@@ -8,6 +8,7 @@ sub command_names {
 }
 
 has foo_bar => (
+    traits => [qw(Getopt)],
     isa => "Bool",
     is  => "ro",
     cmd_aliases => "F",
@@ -15,6 +16,7 @@ has foo_bar => (
 );
 
 has widget => (
+    traits => [qw(Getopt)],
     isa => "Str",
     is  => "ro",
     documentation => "set widget name",

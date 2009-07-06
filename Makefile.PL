@@ -13,8 +13,8 @@ WriteMakefile(
 	PREREQ_PM    => {
 		'Test::use::ok'             => 0,
         'App::Cmd'                  => 0,
-        'Moose'                     => 0,
-        'MooseX::Getopt'            => "0.09",
+        'Moose'                     => 0.86,
+        'MooseX::Getopt'            => "0.18",
         'Getopt::Long::Descriptive' => 0,
 	},
 );

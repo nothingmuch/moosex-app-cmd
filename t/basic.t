@@ -46,7 +46,6 @@ is_deeply(
 }
 
 {
-  local $TODO = "usage not yet supported";
   local @ARGV = qw(justusage);
   eval { $cmd->run };
 
