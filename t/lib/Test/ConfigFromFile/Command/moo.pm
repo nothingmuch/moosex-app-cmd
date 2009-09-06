@@ -19,7 +19,7 @@ has 'moo' => (
     documentation => "required option field",
 );
 
-sub run {
+sub execute {
   my ($self, $opt, $arg) =@_;
 
   die ("cows go " . join(' ', $self->moo));

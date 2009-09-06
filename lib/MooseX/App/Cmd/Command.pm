@@ -91,7 +91,7 @@ MooseX::App::Cmd::Command - Base class for L<MooseX::Getopt> based L<App::Cmd::C
         required => 1,
     );
 
-    sub run {
+    sub execute {
         my ( $self, $opts, $args ) = @_;
 
         print $self->option_field; # also available in $opts->{option_field}

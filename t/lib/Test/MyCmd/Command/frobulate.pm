@@ -22,7 +22,7 @@ has widget => (
     documentation => "set widget name",
 );
 
-sub run {
+sub execute {
   my ($self, $opt, $arg) =@_;
 
   die "the widget name is " . $self->widget . " - @$arg\n";

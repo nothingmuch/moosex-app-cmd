@@ -65,7 +65,7 @@ See L<App::Cmd/SYNOPSIS>.
         documentation => "recheck all results",
     );
 
-    sub run {
+    sub execute {
         my ( $self, $opt, $args ) = @_;
 
         # you may ignore $opt, it's in the attributes anyway
