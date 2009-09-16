@@ -16,7 +16,7 @@ has wow => (
     documentation => "required option field",
 );
 
-sub run {
+sub execute {
   my ($self, $opt, $arg) =@_;
 
   die "my dog name barks " . $self->wow . "\n";
