@@ -12,7 +12,7 @@ WriteMakefile(
     PL_FILES     => {},
     PREREQ_PM    => {
         'Test::use::ok'             => 0,
-        'App::Cmd'                  => 0,
+        'App::Cmd'                  => 0.3,
         'Moose'                     => 0.86,
         'MooseX::Getopt'            => "0.18",
         'Getopt::Long::Descriptive' => 0,

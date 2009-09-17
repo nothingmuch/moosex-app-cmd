@@ -27,6 +27,7 @@ has app => (
 
 sub _process_args {
     my ( $class, $args, @params ) = @_;
+    local @ARGV = @$args;
 
     my $config_from_file;
     if($class->meta->does_role('MooseX::ConfigFromFile')) {
@@ -46,7 +47,7 @@ sub _process_args {
     }
 
     my %processed = $class->_parse_argv(
-        params => { argv => $args },
+        params => { argv => \@ARGV },
         options => [ $class->_attrs_to_options( $config_from_file ) ],
     );
 
