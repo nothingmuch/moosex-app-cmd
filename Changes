@@ -1,3 +1,6 @@
+0.06
+    - various fixes for upstream version of App::Cmd (vovkasm & brunov)
+
 0.05
     - Various minor fixes due to upstream module changes
 
