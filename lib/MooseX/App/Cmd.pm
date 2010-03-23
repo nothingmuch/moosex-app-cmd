@@ -52,6 +52,7 @@ See L<App::Cmd/SYNOPSIS>.
     extends qw(MooseX::App::Cmd::Command);
 
     has blortex => (
+        traits => [qw(Getopt)],
         isa => "Bool",
         is  => "rw",
         cmd_aliases   => "X",
@@ -59,6 +60,7 @@ See L<App::Cmd/SYNOPSIS>.
     );
 
     has recheck => (
+        traits => [qw(Getopt)],
         isa => "Bool",
         is  => "rw",
         cmd_aliases => "r",
